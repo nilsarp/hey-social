@@ -1,9 +1,9 @@
-import tsconfigPaths from "vite-tsconfig-paths";
-import { defineConfig } from "vitest/config";
+import EnvironmentPlugin from 'vite-plugin-environment';
 
-export default defineConfig({
-  plugins: [tsconfigPaths()],
-  test: {
-    environment: "node"
-  }
-});
+export default {
+  plugins: [
+    EnvironmentPlugin({
+      VITE_IS_PRODUCTION: process.env.VITE_IS_PRODUCTION || 'false'
+    })
+  ]
+}
